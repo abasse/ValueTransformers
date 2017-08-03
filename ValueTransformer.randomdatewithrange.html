@@ -1,0 +1,109 @@
+<html>
+<head>
+  <title>Testing Value Transformer</title>
+  <script type="text/javascript" src="soyutils.js"></script>
+  <script type="text/javascript" src="simple.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+// Your Value Transformer
+var ValueTransformer = function () {
+
+    this.displayName = "Random Date with Range";
+    this.shortDescription = "Creates random date string with format within defined range";
+    this.isEditingDisabled = true;
+    
+    this.parameters = function () {
+        var popupDefaultValue = [
+            { displayName: "Javascript", value: "javascript" },
+            { displayName: "Apple DateFormatter", value: "apple" },
+        ];
+
+        var popupUIParam = {
+            name: "type",
+            type: "Popup",
+            displayName: "Date Format Type",
+            description: "Select output date format type",
+            defaultValue: popupDefaultValue
+        };
+        
+        var mindateUIParam = { 
+            type: "String",
+            name: "minDate",
+            displayName: "Min Date",
+            description: "Minimum date in Javascript ISO format of yyyy-mm-dd", 
+            defaultValue: "2017/01/01"
+        };
+        
+        var maxdateUIParam = { 
+            type: "String",
+            name: "maxDate",
+            displayName: "Max Date",
+            description: "Maximum date in Javascript ISO format of yyyy-mm-dd", 
+            defaultValue: "2017/01/01"
+        };
+        
+        return [popupUIParam, mindateUIParam, maxdateUIParam];
+    }
+    
+    this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
+        
+        var value = Number(inputValue);
+		var type = (Array.isArray(parameters.type) == true) ? "javascript" : parameters.type;
+		var minDateString = (parameters.minDate === undefined) ? "2017-01-01" : parameters.minDate;
+		var maxDateString = (parameters.maxDate === undefined) ? "2017-01-30" : parameters.maxDate;
+		
+		var minDate = new Date(minDateString).getTime() / 1000;
+		var maxDate = new Date(maxDateString).getTime() / 1000;
+		
+		if (minDate > maxDate) {
+		    var tempMin = minDate;
+		    var tempMax = maxDate
+		    minDate = tempMax;
+		    maxDate = tempMin;
+		}
+		
+		document.write(minDate + "</br>");
+		document.write(maxDate + "</br>");
+		
+		var randomTimestamp = integer(minDate, maxDate);
+		document.write(randomTimestamp + "</br>");
+		
+		var randomDate = new Date(randomTimestamp * 1000);
+		var dateString = randomDate.toDateString();
+		
+        return dateString;
+    };
+    
+    function integer(min,max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+}
+
+function sjeClass() {
+    return new ValueTransformer();
+}
+
+// User selected fake parameters
+
+var parameters = {
+    minDate : "2017-10-02",
+    maxDate : "2017-08-03"
+};
+
+var inputValue = 100;
+var jsonValue = "";
+var arrayIndex = 0;
+
+var plugin = new ValueTransformer();
+
+for (var i = 0; i < 1; i++) {
+    arrayIndex = i;
+    var value = plugin.transform(inputValue,inputValue,arrayIndex, parameters);
+    document.write(value + "</br>");
+}
+   
+  </script>
+</body>
+</html>

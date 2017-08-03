@@ -1,4 +1,3 @@
-/* Documentation : https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformers */
 var ValueTransformer = function () {
     
     this.displayName = "Name & Surname Generator";

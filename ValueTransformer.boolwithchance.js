@@ -5,6 +5,7 @@ var ValueTransformer = function () {
     this.isEditingDisabled = true;
 
     this.parameters = function () {
+        
         var numberUIParam = {
             type: "Number",
             name: "likehood",
@@ -12,6 +13,7 @@ var ValueTransformer = function () {
             description: "0-100 range of true percentage.",
             defaultValue: 50
         };
+        
         return [numberUIParam];
     }
     
@@ -21,15 +23,9 @@ var ValueTransformer = function () {
 
         if (parameters.likehood === undefined) {
 
-            if (info.jsonNode.type == 2) {
-                return "Error: Y must provide likehood percentage.";
-            }
-            if (info.jsonNode.type == 3) {
-                return 0;
-            }
-            if (info.jsonNode.type == 4) {
-                return 0;
-            }
+            if (info.jsonNode.type == 2) { return "Error: Y must provide likehood percentage."; }
+            if (info.jsonNode.type == 3) { return 0; }
+            if (info.jsonNode.type == 4) { return 0; }
         }
 
         return (chance < parameters.likehood);
