@@ -26,8 +26,22 @@ var ValueTransformer = function () {
             description: "Define your format, click on info button to see the possible format symbols and detailed description.",
             defaultValue: "[A][A][A]-[#][#][#]"
         };
+        
+        var segmentsDefaultValues = [
+            { displayName: "Prepend", enabled: 0 },
+            { displayName: "Replace" , enabled: 1 }, 
+            { displayName: "Append" , enabled: 0 }
+        ];
+        
+        var segmentsUIParam = {
+            type: "Segments",
+            name: "output", 
+            displayName: "Output",
+            description: "Select how to output the value.", 
+            defaultValue: segmentsDefaultValues 
+        };
 
-        return [typeUIParam, indexUIParam];
+        return [typeUIParam, indexUIParam, segmentsUIParam];
     }
 
     this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
@@ -70,8 +84,12 @@ var ValueTransformer = function () {
                 string = string + character;
             }
         }
+        
+        if (parameters.output[0].enabled == 1) { return string + inputValue; }
+		if (parameters.output[1].enabled == 1) { return string; }
+		if (parameters.output[2].enabled == 1) { return inputValue + string; }
 
-        return string;
+        return "Error";
     };
 
     function processToken(token) {

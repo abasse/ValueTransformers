@@ -1,12 +1,3 @@
-<html>
-<head>
-  <title>Testing Value Transformer</title>
-  <script type="text/javascript" src="soyutils.js"></script>
-  <script type="text/javascript" src="simple.js"></script>
-</head>
-<body>
-  <script type="text/javascript">
-// Your Value Transformer
 var ValueTransformer = function () {
 
     this.displayName = "Random Date with Range";
@@ -15,13 +6,13 @@ var ValueTransformer = function () {
     
     this.parameters = function () {
         var popupDefaultValue = [
-            { displayName: "Timestamp in seconds | parse() *1000", value: "timestamp_seconds" },
+            { displayName: "Timestamp in seconds | parse() * 1000", value: "timestamp_seconds" },
             { displayName: "Timestamp in miliseconds | parse()", value: "timestamp_miliseconds" },
             { displayName: "Mon Jan 01 2000 | toDateString()", value: "toDateString" },
             { displayName: "2000-01-01T00:00:00.000Z | toISOString()", value: "toISOString" },
             { displayName: "01/01/2000 | toLocaleDateString()", value: "toLocaleDateString" },
             { displayName: "Mon Jan 01 200 00:00:00 GMT-00600 (CST) | toString()", value: "toString" },
-            { displayName: "Mon, 01 Jan 2000 00:00:00 GMT toUTCString()", value: "toUTCString" },
+            { displayName: "Mon, 01 Jan 2000 00:00:00 GMT | toUTCString()", value: "toUTCString" },
             { displayName: "Swift DateFormatter Format", value: "dateformatter" }
         ];
 
@@ -38,7 +29,7 @@ var ValueTransformer = function () {
             name: "minDate",
             displayName: "Min Date",
             description: "Minimum date in Javascript ISO format of yyyy-mm-dd", 
-            defaultValue: "2017/01/01"
+            defaultValue: "2017-01-01"
         };
         
         var maxdateUIParam = { 
@@ -46,7 +37,7 @@ var ValueTransformer = function () {
             name: "maxDate",
             displayName: "Max Date",
             description: "Maximum date in Javascript ISO format of yyyy-mm-dd", 
-            defaultValue: "2017/01/01"
+            defaultValue: "2017-01-30"
         };
         
         var swiftFormatUIParam = { 
@@ -54,7 +45,7 @@ var ValueTransformer = function () {
             name: "swiftFormatter",
             displayName: "Swift DateFormatter Format",
             description: "Using Apple Swift DateFormatter class format string.", 
-            defaultValue: "YYY-mm-dd"
+            defaultValue: "yyyy-MM-dd"
         };
         
         return [mindateUIParam, maxdateUIParam, popupUIParam, swiftFormatUIParam];
@@ -62,8 +53,7 @@ var ValueTransformer = function () {
     
     this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
         
-        var value = Number(inputValue);
-		var type = (Array.isArray(parameters.type) == true) ? "javascript" : parameters.type;
+		var type = (Array.isArray(parameters.type) == true) ? "timestamp_seconds" : parameters.type;
 		var minDateString = (parameters.minDate === undefined) ? "2017-01-01" : parameters.minDate;
 		var maxDateString = (parameters.maxDate === undefined) ? "2017-01-30" : parameters.maxDate;
 		var format = (parameters.swiftFormatter === undefined) ? "" : parameters.swiftFormatter;
@@ -78,12 +68,7 @@ var ValueTransformer = function () {
 		    maxDate = tempMin;
 		}
 		
-		document.write(minDate + "</br>");
-		document.write(maxDate + "</br>");
-		
-		var randomTimestamp = integer(minDate, maxDate);
-		document.write(randomTimestamp + "</br>");
-		
+		var randomTimestamp = integer(minDate, maxDate);		
 		var randomDate = new Date(randomTimestamp);
 		
 		if (type == "timestamp_seconds") { return parseInt(Date.parse(randomDate) / 1000); }
@@ -101,33 +86,8 @@ var ValueTransformer = function () {
     function integer(min,max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
-
 }
 
 function sjeClass() {
     return new ValueTransformer();
 }
-
-// User selected fake parameters
-
-var parameters = {
-    type: "toUTCString",
-    minDate : "2017-10-02",
-    maxDate : "2017-08-03"
-};
-
-var inputValue = 100;
-var jsonValue = "";
-var arrayIndex = 0;
-
-var plugin = new ValueTransformer();
-
-for (var i = 0; i < 1; i++) {
-    arrayIndex = i;
-    var value = plugin.transform(inputValue,inputValue,arrayIndex, parameters);
-    document.write(value + "</br>");
-}
-   
-  </script>
-</body>
-</html>
