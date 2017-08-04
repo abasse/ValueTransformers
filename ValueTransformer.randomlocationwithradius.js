@@ -6,7 +6,6 @@ var ValueTransformer = function () {
 
     this.parameters = function () {
 
-        //Map Parameter
         var mapDefaultValues = {
             latitude: 8.0,
             longitude: 11.0,
@@ -22,16 +21,14 @@ var ValueTransformer = function () {
             defaultValue: mapDefaultValues
         };
 
-        // Radius Parameter
         var radius = {
             name: "radius",
             displayName: "Radius",
             description: "Select random radius in meters",
             type: "Number",
-            defaultValue: 100
+            defaultValue: 1000
         };
 
-        // Output Parameter
         var outupsDefaultValues = [{
             name: "latitude",
             displayName: "Latitude",
@@ -72,19 +69,12 @@ var ValueTransformer = function () {
         var newLatitude = y0 + y1
         var newLongitude = x0 + x1
 
-        if (parameters.output[0].enabled == 1) {
-            return newLatitude;
-        }
-
-        if (parameters.output[1].enabled == 1) {
-            return newLongitude;
-        }
-
+        if (parameters.output[0].enabled == 1) { return newLatitude; }
+        if (parameters.output[1].enabled == 1) { return newLongitude; }
         return "Error";
     };
 }
 
-// Requiered global function
 function sjeClass() {
     return new ValueTransformer();
 }

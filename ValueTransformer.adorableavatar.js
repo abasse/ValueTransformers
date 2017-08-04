@@ -24,7 +24,6 @@ var ValueTransformer = function () {
         url = url + parameters.size + "/";
         url = url + randomInt.toString();
         return url;
-
     };
     
     function randomIntFromInterval(min,max) {
