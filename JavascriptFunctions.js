@@ -25,5 +25,3 @@ function float(optionsMin,optionsMax,optionsFixed) {
     return parseFloat(num_fixed);
 }
 
-var float = float(-2345,8765,4);
-console.log(float);

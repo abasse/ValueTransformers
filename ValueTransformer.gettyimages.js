@@ -74,7 +74,6 @@ var ValueTransformer = function () {
     this.request = function (parameters, info) {
 
         var apiKey = "pytq9sjnksbuw7fhry8sat4j";
-        var apiSecret = "dC22QvKcndqh72xmNxquwzJZkbmpN8Fwhye7WtWdHFSZt";
 
         var request = Request.instance();
         request.scheme = "https"

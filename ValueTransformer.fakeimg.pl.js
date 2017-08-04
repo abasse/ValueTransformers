@@ -66,7 +66,6 @@ var ValueTransformer = function () {
         if (parameters.text != "") {
             url = url + "?text=" + parameters.text;
         }
-
         if (parameters.output[0].enabled == 1) {
             return url + inputValue;
         };
