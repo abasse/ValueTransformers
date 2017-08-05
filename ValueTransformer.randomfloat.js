@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Random Float";
     this.shortDescription = "Generate random float number with min/max and fixed floating points.";
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-RandomFloat";
     
     this.parameters = function () {
         

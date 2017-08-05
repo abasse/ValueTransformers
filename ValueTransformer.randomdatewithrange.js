@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Random Date with Range";
     this.shortDescription = "Creates random date string with format within defined range";
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-RandomDateWithRange";
     
     this.parameters = function () {
         var popupDefaultValue = [

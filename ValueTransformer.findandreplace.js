@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Find and replace";
     this.shortDescription = "Find & replace text using text or regular expression.";
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-FindAndReplace";
     
     this.parameters = function () {
         

@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Lorem Ipsum Generator";
     this.shortDescription = "Generate fake text in popular format.";
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-LoremIpsum";
 
     this.parameters = function () {
 

@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Random Integer";
     this.shortDescription = "Generate random integer number with min/max range."
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-RandomInteger";
     
     this.parameters = function () {
         

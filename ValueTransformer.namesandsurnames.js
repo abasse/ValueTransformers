@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Name & Surname Generator";
     this.shortDescription = "Generate firstnames & lastnames.";
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-NamesAndSurnames";
     
 	this.parameters = function () {
 		

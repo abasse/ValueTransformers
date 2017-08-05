@@ -3,6 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Static Text";
     this.shortDescription = "Prepend, replace or append a static text."
     this.isEditingDisabled = true;
+    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-StaticText";
     
     this.parameters = function () {
         
@@ -33,15 +34,9 @@ var ValueTransformer = function () {
 
     this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
 		
-		if (parameters.output[0].enabled == 1) {
-			return parameters.text + inputValue;
-		}
-		if (parameters.output[1].enabled == 1) {
-			return parameters.text;
-		}
-		if (parameters.output[2].enabled == 1) {
-			return inputValue + parameters.text;
-		}
+		if (parameters.output[0].enabled == 1) { return parameters.text + inputValue; }
+		if (parameters.output[1].enabled == 1) { return parameters.text; }
+		if (parameters.output[2].enabled == 1) { return inputValue + parameters.text; }
         return "Error: Invalid parameters";
     };
 }
