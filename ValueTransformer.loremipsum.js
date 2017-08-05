@@ -52,7 +52,7 @@ var ValueTransformer = function () {
         var timestamp = DocumentModel.unixTimestamp();
 
         var numberOfItems = parameters.items;
-        var type = (parameters.popup === undefined) ? words :  parameters.popup;
+        var type = (Array.isArray(parameters.popup) == true) ? "words" :  parameters.popup;
         var value = "";
 
         if (type == "words") {

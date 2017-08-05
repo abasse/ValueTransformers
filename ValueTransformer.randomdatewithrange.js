@@ -49,7 +49,21 @@ var ValueTransformer = function () {
             defaultValue: "yyyy-MM-dd"
         };
         
-        return [mindateUIParam, maxdateUIParam, popupUIParam, swiftFormatUIParam];
+        var segmentsDefaultValues = [
+            { displayName: "Prepend", enabled: 0 },
+            { displayName: "Replace" , enabled: 1 }, 
+            { displayName: "Append" , enabled: 0 }
+        ];
+        
+        var segmentsUIParam = {
+            type: "Segments",
+            name: "output", 
+            displayName: "Output",
+            description: "Select how to output the value.", 
+            defaultValue: segmentsDefaultValues 
+        };
+        
+        return [mindateUIParam, maxdateUIParam, popupUIParam, swiftFormatUIParam, segmentsUIParam];
     }
     
     this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
@@ -71,15 +85,21 @@ var ValueTransformer = function () {
 		
 		var randomTimestamp = integer(minDate, maxDate);		
 		var randomDate = new Date(randomTimestamp);
+        
+        var value;
 		
-		if (type == "timestamp_seconds") { return parseInt(Date.parse(randomDate) / 1000); }
-		if (type == "timestamp_miliseconds") { return Date.parse(randomDate); }
-		if (type == "toDateString") { return randomDate.toDateString(); }
-		if (type == "toISOString") { return randomDate.toISOString(); }
-		if (type == "toLocaleDateString") { return randomDate.toLocaleDateString(); }
-		if (type == "toString") { return randomDate.toString(); }
-		if (type == "toUTCString") { return randomDate.toUTCString(); }
-		if (type == "dateformatter") { return DocumentModel.dateTimeString(format, parseInt(Date.parse(randomDate) / 1000)); }
+		if (type == "timestamp_seconds") { value = parseInt(Date.parse(randomDate) / 1000); }
+		if (type == "timestamp_miliseconds") { value = Date.parse(randomDate); }
+		if (type == "toDateString") { value = randomDate.toDateString(); }
+		if (type == "toISOString") { value = randomDate.toISOString(); }
+		if (type == "toLocaleDateString") { value = randomDate.toLocaleDateString(); }
+		if (type == "toString") { value = randomDate.toString(); }
+		if (type == "toUTCString") { value = randomDate.toUTCString(); }
+		if (type == "dateformatter") { value = DocumentModel.dateTimeString(format, parseInt(Date.parse(randomDate) / 1000)); }
+        
+        if (parameters.output[0].enabled == 1) { return value + inputValue; };
+        if (parameters.output[1].enabled == 1) { return value; };
+        if (parameters.output[2].enabled == 1) { return inputValue + value; };
 
         return "Error";
     };

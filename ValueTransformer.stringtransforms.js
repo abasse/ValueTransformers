@@ -37,7 +37,7 @@ var ValueTransformer = function () {
     
     this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
        
-        var type = (parameters.type === undefined) ? "UpperCase" : parameters.type;
+        var type = (Array.isArray(parameters.type) == true) ? "UpperCase" : parameters.type;
         var sliceIndex = (parameters.index === undefined) ? 0 : parameters.index;
         
         var value = inputValue;
