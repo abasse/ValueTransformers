@@ -12,7 +12,7 @@ var ValueTransformer = function () {
             name: "items",
             displayName: "Number of items",
             description: "Select number of items you want to generate",
-            defaultValue: 50
+            defaultValue: 5
         };
 
         var popupDefaultValue = [
