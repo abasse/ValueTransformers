@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Countries and States";
     this.shortDescription = "Generate countries and US states.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-CountriesAndStates";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-CountriesAndStates";
     
 	this.parameters = function () {
 		

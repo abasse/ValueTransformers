@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Lorempixel.com";
     this.shortDescription = "Generate testing image urls.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-LoremPixel";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-LoremPixel";
     
     this.parameters = function () {
         

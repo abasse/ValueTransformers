@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "String Case Transformer.";
     this.shortDescription = "Change case of text to ALLCAPITALS,lowercase, Capitalize, trim white space and substring.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-StringTransforms";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-StringTransforms";
     
     this.parameters = function () {
         

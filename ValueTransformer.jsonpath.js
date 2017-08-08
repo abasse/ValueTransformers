@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Json Path";
     this.shortDescription = "Extract values from other Project Nodes using jsonPath.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-JsonPath";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-JsonPath";
     
     this.parameters = function () {
         

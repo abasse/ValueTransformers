@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Timestamp";
     this.shortDescription = "Unix Timestamp";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-Timestamp";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-Timestamp";
 
     this.parameters = function () {
 

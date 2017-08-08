@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Bool with chance";
     this.shortDescription = "Generate true values with percentage chance.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-BoolWithChance";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-BoolWithChance";
 
 
     this.parameters = function () {

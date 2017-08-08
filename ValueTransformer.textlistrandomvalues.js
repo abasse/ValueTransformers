@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Random String from List";
     this.shortDescription = "Random values from text list divided by coma, semicolon, etc."
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-TextListRandomValues";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-TextListRandomValues";
     
     this.parameters = function () {
 		

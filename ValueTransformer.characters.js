@@ -4,7 +4,7 @@ var ValueTransformer = function () {
     this.shortDescription = "Generate characters or define yours to use.";
     this.isEditingDisabled = true;
     this.disabledValueTypes = [3,4];
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-RandomCharacters";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-RandomCharacters";
 
     this.parameters = function () {
 

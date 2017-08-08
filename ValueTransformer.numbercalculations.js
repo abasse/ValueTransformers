@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Number Calculations";
     this.shortDescription = "Perform basic calculations.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-NumberCalculations";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-NumberCalculations";
     
     this.parameters = function () {
         var popupDefaultValue = [

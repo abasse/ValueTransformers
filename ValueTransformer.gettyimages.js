@@ -1,11 +1,10 @@
-/* Documentation : https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformers */
 var ValueTransformer = function () {
 
     this.displayName = "Getty Images";
     this.shortDescription = "Load testing images from Getty Images API.";
     this.disableLiveRefresh = true;
     this.disabledValueTypes = [3,4];
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-GettyImages";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-GettyImages";
     
     this.parameters = function () {
 

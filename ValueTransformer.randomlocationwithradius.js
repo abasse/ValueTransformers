@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Random Location with Radius";
     this.identifier = "com.swiftjsoneditor.valueplugin.icloud.randomlocationwithradius";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-RandomLocationWithRadius";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-RandomLocationWithRadius";
 
     this.parameters = function () {
 

@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Fakeimg.pl - Fake Images";
     this.shortDescription = "Fakeimg.pl - Generate fake image urls.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-Fakeimg.pl";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-Fakeimg.pl";
 
     this.parameters = function () {
         

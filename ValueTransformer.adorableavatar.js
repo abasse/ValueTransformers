@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Adorable Avatars";
     this.shortDescription = "Generate adorable avatar urls using avatars.adorable.io service."
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-AdorableAvatars";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-AdorableAvatars";
     
     this.parameters = function () {
         

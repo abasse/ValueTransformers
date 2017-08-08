@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Static Text";
     this.shortDescription = "Prepend, replace or append a static text."
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-StaticText";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-StaticText";
     
     this.parameters = function () {
         

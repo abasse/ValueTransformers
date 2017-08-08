@@ -3,7 +3,7 @@ var ValueTransformer = function () {
     this.displayName = "Tokenized Characters";
     this.shortDescription = "Random characters using defined token format.";
     this.isEditingDisabled = true;
-    this.infoUrl = "https://github.com/swiftjsoneditor/PublicDocuments/wiki/ValueTransformer-TokenizedCharacters";
+    this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-TokenizedCharacters";
 
     this.parameters = function () {
 
