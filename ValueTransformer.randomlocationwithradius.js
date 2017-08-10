@@ -8,8 +8,8 @@ var ValueTransformer = function () {
     this.parameters = function () {
 
         var mapDefaultValues = {
-            latitude: 8.0,
-            longitude: 11.0,
+            latitude: 25.781925,
+            longitude: -80.1303897,
             latitudeDelta: 0.0,
             longitudeDelta: 0.0,
             mapType: 0
@@ -33,7 +33,7 @@ var ValueTransformer = function () {
         var stringUIParam = { 
 			name: "separator", 
 			type: "String", 
-			displayName: "Lat & Lon separated by", description: "In case of joined Latitude & Longitude output, separator will be used.", 
+			displayName: "Latitude & Longitude separated by", description: "In case of joined Latitude & Longitude output, separator will be used.", 
 			defaultValue: ","
 		};
         
@@ -47,15 +47,15 @@ var ValueTransformer = function () {
 			name: "output", 
 			type: "Popup", 
 			displayName: "Output as", 
-			description: "Select output options.",
+			description: "Select output options. If separator is used, your value type must be String type.",
 			defaultValue: popupDefaultValue 
 		};
 
 
-        return [mapParameter, radius, outputsParameter];
+        return [mapParameter, radius, stringUIParam, popupUIParam];
     };
 
-    this.transform = function (inputValue, jsonValue, arrayIndex, parameters) {
+    this.transform = function (inputValue, jsonValue, arrayIndex, parameters, info) {
 
         var latitude = parameters.locationMap.latitude;
         var longitude = parameters.locationMap.longitude;
@@ -79,8 +79,16 @@ var ValueTransformer = function () {
 
         if (output == "lat") { return newLatitude; }
         if (output == "lon") { return newLongitude; }
-        if (output == "lat_sep_lon") { return newLatitude + separator + newLongitude; }
-        if (output == "lon_sep_lat") { return newLongitude + separator + newLatitude; }
+        if (output == "lat_sep_lon") { 
+            if (info.jsonNode.type == 3) { return -1 };
+            if (info.jsonNode.type == 4) { return false };
+            return newLatitude + separator + newLongitude;
+        }
+        if (output == "lon_sep_lat") {
+            if (info.jsonNode.type == 3) { return -1 };
+            if (info.jsonNode.type == 4) { return false };
+            return newLongitude + separator + newLatitude; 
+        }
         return "Error";
     };
 }
