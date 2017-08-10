@@ -1,7 +1,7 @@
 var ValueTransformer = function () {
 
     this.displayName = "Random Location with Radius";
-    this.identifier = "com.swiftjsoneditor.valueplugin.icloud.randomlocationwithradius";
+    this.shortDescription = "Generate";
     this.isEditingDisabled = true;
     this.infoUrl = "https://github.com/SmartJSONEditor/PublicDocuments/wiki/ValueTransformer-RandomLocationWithRadius";
 
@@ -29,23 +29,28 @@ var ValueTransformer = function () {
             type: "Number",
             defaultValue: 1000
         };
+        
+        var stringUIParam = { 
+			name: "separator", 
+			type: "String", 
+			displayName: "Lat & Lon separated by", description: "In case of joined Latitude & Longitude output, separator will be used.", 
+			defaultValue: ","
+		};
+        
+        var popupDefaultValue = [ 
+			{ displayName: "Latitude", value: "lat" },
+			{ displayName: "Longitude", value: "lon" },
+			{ displayName: "Latitude & Longitude using separator", value: "lat_sep_lon" },
+			{ displayName: "longitude & Latitude using separator", value: "lon_sep_lat" },
+		];
+    	var popupUIParam = { 
+			name: "output", 
+			type: "Popup", 
+			displayName: "Output as", 
+			description: "Select output options.",
+			defaultValue: popupDefaultValue 
+		};
 
-        var outupsDefaultValues = [{
-            name: "latitude",
-            displayName: "Latitude",
-            enabled: 1
-                                   }, {
-            name: "longitude",
-            displayName: "Longitude",
-            enabled: 0
-                                   }];
-        var outputsParameter = {
-            name: "output",
-            displayName: "Output value of",
-            description: "Select output option for plugin",
-            type: "Options",
-            defaultValue: outupsDefaultValues
-        };
 
         return [mapParameter, radius, outputsParameter];
     };
@@ -55,6 +60,8 @@ var ValueTransformer = function () {
         var latitude = parameters.locationMap.latitude;
         var longitude = parameters.locationMap.longitude;
         var radius = parameters.radius;
+        var output = (Array.isArray(parameters.output) == true) ? "lat" :  parameters.output;
+        var separator = (parameters.separator === undefined) ? "," : parameters.separator;
 
         var r = radius / 111300,
             y0 = latitude,
@@ -68,10 +75,12 @@ var ValueTransformer = function () {
             x1 = x / Math.cos(y0)
 
         var newLatitude = y0 + y1
-        var newLongitude = x0 + x1
+        var newLongitude = x0 + x1        
 
-        if (parameters.output[0].enabled == 1) { return newLatitude; }
-        if (parameters.output[1].enabled == 1) { return newLongitude; }
+        if (output == "lat") { return newLatitude; }
+        if (output == "lon") { return newLongitude; }
+        if (output == "lat_sep_lon") { return newLatitude + separator + newLongitude; }
+        if (output == "lon_sep_lat") { return newLongitude + separator + newLatitude; }
         return "Error";
     };
 }
